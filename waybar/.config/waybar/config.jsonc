@@ -1,0 +1,118 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top",
+  "position": "top",
+  "height": 10,
+  "spacing": 4,
+  "mode": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "margin": 10,
+  "ipc": true,
+  "fixed-center": true,
+
+
+  "modules-left": [
+    "sway/language",
+    "backlight",
+    "battery",
+    "cpu",
+    "memory",
+    "temperature",
+    "pulseaudio",
+  ],
+  "modules-center": [
+        "sway/scratchpad",
+        "sway/workspaces"
+    ],
+  "modules-right": [
+        "tray",
+        "clock"
+    ],
+    "sway/language": {
+        "format": "({short}  )"
+    },
+    "sway/workspaces": {
+    "disable-scroll": true,
+    //"all-outputs": true,
+    "warningarp-on-scroll": false,
+    //"format": "{name}: {icon}",
+    "format": "{name}",
+    //"format-icons": {
+    //"1": "",
+    //"focused": "",
+    //"default": "",
+    //},
+  },
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}",
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10,
+  },
+  "clock": {
+    "interval": 1,
+    "timezone": "Asia/Tehran",
+    "format": "{:%H %M  %S}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}",
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": false,
+  },
+  "memory": {
+    "format": "{}% ",
+  },
+  "temperature": {
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C {icon}",
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": ["", "", ""],
+  },
+  "backlight": {
+    "format": "{percent}%{icon}",
+    "format-icons": ["󰹐", "󱩐", "󱩒", "󱩖", "󱐋"],
+},
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20,
+    },
+    "format": "{capacity}%{icon}",
+    "format-full": "{capacity}%{icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": [" ", " ", " ", " ", " "],
+  },
+  "battery#bat2": {
+    "bat": "BAT2",
+  },
+    "pulseaudio": {
+        "format": "{volume}%{icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": " ",
+        "format-source": " (MIC/ON)",
+        "format-source-muted": " (MIC/OFF)",
+        "format-icons": {
+       "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+        },
+        "on-click": "pavucontrol"
+  },
+}

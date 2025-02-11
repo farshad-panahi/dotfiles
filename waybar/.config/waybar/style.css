@@ -1,0 +1,147 @@
+@define-color bg_none       rgba(0,0,0,0);
+@define-color bg_fade       rgba(0,0,0,0.1);
+@define-color gray       #3f3f3f;
+@define-color bg_black      #000000;
+@define-color bg_white      #ffffff;
+@define-color pc            #3498db;
+@define-color sc            #2ecc71;
+@define-color focus_color   #131b23;
+@define-color notice_color  #a37800;
+@define-color eurgent_color #eb4d4b;
+
+* {
+  font-family: "Victor Mono SemiBold";
+  font-size: 10px;
+  padding: 0;
+}
+
+window#waybar {
+    background-color: @bg_none
+}
+
+.modules-left {
+  background-color: @bg_fade;
+  border-radius: 3px;
+  padding: 0 10px;
+}
+
+.modules-center {}
+.modules-right{}
+
+button {}
+
+button:hover {
+    background-color: @notice_color;
+}
+#workspaces button {}
+
+#workspaces button:hover {}
+
+#workspaces button.focused {
+  color: @focus_color;
+  background-color: @bg_fade;
+  border-radius: 3px;
+}
+
+#workspaces button.urgent {
+  margin-left: 10px;
+  background-color: @eurgent_color;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#pulseaudio,
+#wireplumber,
+#tray,
+#language,
+#mpd {
+  color: @gray;
+  font-weight: 100;
+  margin: 0 5px;
+  font-size: 14px; 
+}
+
+#workspaces {}
+
+#clock {
+  background-color: @bg_none;
+  color: @gray;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 0 5px;
+}
+
+#battery {
+}
+
+#battery.charging,
+#battery.plugged {
+}
+
+@keyframes blink {
+  to {
+    background-color: @bg_white;
+    color: @bg_black;
+  }
+}
+
+#battery.critical:not(.charging) {
+  color: @bg_white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#pulseaudio {
+    border-radius: 5px
+}
+#pulseaudio:hover {
+  background-color: @notice_color;
+}
+
+
+#pulseaudio.muted {
+  background-color: @eurgent_color;
+  padding: 0 10px;
+  border-radius: 7px;
+}
+#wireplumber.muted {
+  background-color: @notice_color;
+}
+#temperature {
+}
+
+#temperature.critical {
+  background-color: @eurgent_color;
+}
+
+#tray {
+  background-color: @bg_fade;
+  border-radius: 3px;
+  padding: 0 15px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @eurgent_color;
+}
+
+#language {
+  min-width: 30px;
+}
+
+#scratchpad {
+  background: @bg_fade;
+  padding: 0 10px;
+  border-radius: 3px;
+}
+
