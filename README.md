@@ -7,4 +7,4 @@
 > **Apps**
 >
 > - [Waybar](https://github.com/Alexays/Waybar)
-
+> - [Rofi](https://github.com/davatorium/rofi)
